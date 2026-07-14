@@ -1,0 +1,10 @@
+DFS(Graph, Node)
+
+Mark Node as Visited
+Print Node
+
+For each Neighbor of Node do
+    If Neighbor is not Visited then
+        DFS(Graph, Neighbor)
+    End If
+End For

@@ -1,0 +1,19 @@
+BFS(Graph, Start)
+
+Create Queue Q
+Create Visited Set
+
+Enqueue(Start)
+Mark Start as Visited
+
+While Q is not empty do
+    Node ← Dequeue(Q)
+    Print Node
+
+    For each Neighbor of Node do
+        If Neighbor is not Visited then
+            Mark Neighbor as Visited
+            Enqueue(Neighbor)
+        End If
+    End For
+End While
