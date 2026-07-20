@@ -1,0 +1,22 @@
+GreedyBestFirstSearch(Graph, Start, Goal)
+
+Create Priority Queue PQ
+Insert(Start, Heuristic(Start))
+Create Visited Set
+
+While PQ is not empty do
+    Node ← Remove node with minimum heuristic
+
+    If Node = Goal then
+        Print "Goal Found"
+        Stop
+    End If
+
+    Mark Node as Visited
+
+    For each Neighbor of Node do
+        If Neighbor is not Visited then
+            Insert(Neighbor, Heuristic(Neighbor))
+        End If
+    End For
+End While
