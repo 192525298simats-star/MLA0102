@@ -1,41 +1,67 @@
 import heapq
 
+def greedy_best_first_search(graph, heuristic, start, goal):
+    # Priority queue: (heuristic value, node)
+    open_list = []
+    heapq.heappush(open_list, (heuristic[start], start))
+
+    visited = set()
+    parent = {start: None}
+
+    while open_list:
+        h, current = heapq.heappop(open_list)
+
+        if current in visited:
+            continue
+
+        visited.add(current)
+
+        if current == goal:
+            # Reconstruct path
+            path = []
+            while current is not None:
+                path.append(current)
+                current = parent[current]
+            return path[::-1]
+
+        for neighbor in graph[current]:
+            if neighbor not in visited:
+                parent[neighbor] = current
+                heapq.heappush(open_list, (heuristic[neighbor], neighbor))
+
+    return None
+
+
+# Example graph
 graph = {
-    'A': [('B', 4), ('C', 2)],
-    'B': [('D', 5), ('E', 1)],
-    'C': [('F', 3)],
+    'A': ['B', 'C'],
+    'B': ['D', 'E'],
+    'C': ['F', 'G'],
     'D': [],
-    'E': [],
-    'F': []
+    'E': ['H'],
+    'F': [],
+    'G': [],
+    'H': []
 }
 
+# Heuristic values (estimated distance to goal H)
 heuristic = {
-    'A': 6,
-    'B': 4,
-    'C': 2,
-    'D': 3,
-    'E': 1,
-    'F': 0
+    'A': 7,
+    'B': 6,
+    'C': 5,
+    'D': 4,
+    'E': 2,
+    'F': 3,
+    'G': 6,
+    'H': 0
 }
 
-def best_first_search(start, goal):
-    pq = []
-    visited = []
+start = 'A'
+goal = 'H'
 
-    heapq.heappush(pq, (heuristic[start], start))
+path = greedy_best_first_search(graph, heuristic, start, goal)
 
-    while pq:
-        h, node = heapq.heappop(pq)
-
-        if node not in visited:
-            print(node, end=" ")
-            visited.append(node)
-
-            if node == goal:
-                print("\nGoal Found")
-                return
-
-            for neighbor, cost in graph[node]:
-                heapq.heappush(pq, (heuristic[neighbor], neighbor))
-
-best_first_search('A', 'F')
+if path:
+    print("Path found:", " -> ".join(path))
+else:
+    print("No path found")
