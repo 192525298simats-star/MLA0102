@@ -1,0 +1,17 @@
+Algorithm Minimax(depth, nodeIndex, isMax)
+
+If depth == height
+    Return score[nodeIndex]
+
+If isMax == True
+    Return Maximum(
+        Minimax(depth+1, left child, False),
+        Minimax(depth+1, right child, False)
+    )
+Else
+    Return Minimum(
+        Minimax(depth+1, left child, True),
+        Minimax(depth+1, right child, True)
+    )
+
+End
