@@ -1,0 +1,26 @@
+Algorithm AlphaBeta(depth, nodeIndex, isMax, alpha, beta)
+
+If depth == height
+    Return score[nodeIndex]
+
+If isMax == True
+    best = -∞
+    For each child
+        value = AlphaBeta(child, False, alpha, beta)
+        best = max(best, value)
+        alpha = max(alpha, best)
+        If beta <= alpha
+            Break
+    Return best
+
+Else
+    best = +∞
+    For each child
+        value = AlphaBeta(child, True, alpha, beta)
+        best = min(best, value)
+        beta = min(beta, best)
+        If beta <= alpha
+            Break
+    Return best
+
+End
