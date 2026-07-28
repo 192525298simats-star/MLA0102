@@ -1,0 +1,12 @@
+TowerOfHanoi(n, Source, Auxiliary, Destination)
+
+If n = 1 then
+    Print "Move disk 1 from", Source, "to", Destination
+    Return
+End If
+
+TowerOfHanoi(n - 1, Source, Destination, Auxiliary)
+
+Print "Move disk", n, "from", Source, "to", Destination
+
+TowerOfHanoi(n - 1, Auxiliary, Source, Destination)

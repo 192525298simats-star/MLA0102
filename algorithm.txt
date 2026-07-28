@@ -1,0 +1,34 @@
+WaterJugBFS(Jug1, Jug2, Target)
+
+Create Queue Q
+Create Visited Set
+
+Insert (0, 0) into Q
+
+While Q is not empty do
+    (x, y) ← Remove front state from Q
+
+    If (x, y) is already visited then
+        Continue
+    End If
+
+    Mark (x, y) as visited
+
+    If x = Target OR y = Target then
+        Print "Goal Found"
+        Print (x, y)
+        Stop
+    End If
+
+    Insert the following valid states into Q:
+        Fill Jug1
+        Fill Jug2
+        Empty Jug1
+        Empty Jug2
+        Pour Jug1 → Jug2
+        Pour Jug2 → Jug1
+
+End While
+
+Print "No Solution Exists"
+Stop
