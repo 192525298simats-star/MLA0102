@@ -1,0 +1,25 @@
+def artificial_neural_network(attendance, marks):
+
+    score = 0
+
+    # Neuron 1
+    if attendance >= 75:
+        score = score + 1
+
+    # Neuron 2
+    if marks >= 40:
+        score = score + 1
+
+    # Output Neuron
+    if score == 2:
+        return "Pass"
+    else:
+        return "Fail"
+
+
+attendance = int(input("Enter Attendance Percentage: "))
+marks = int(input("Enter Marks: "))
+
+result = artificial_neural_network(attendance, marks)
+
+print(result)

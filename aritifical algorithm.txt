@@ -1,0 +1,22 @@
+BEGIN
+
+READ Attendance
+READ Marks
+
+SET Score = 0
+
+IF Attendance >= 75 THEN
+    Score = Score + 1
+END IF
+
+IF Marks >= 40 THEN
+    Score = Score + 1
+END IF
+
+IF Score = 2 THEN
+    PRINT "Pass"
+ELSE
+    PRINT "Fail"
+END IF
+
+END
