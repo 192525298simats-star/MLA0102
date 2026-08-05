@@ -1,22 +1,28 @@
 BEGIN
 
-READ Attendance
-READ Marks
+Input training data (X, Y)
 
-SET Score = 0
+Initialize weights and bias
 
-IF Attendance >= 75 THEN
-    Score = Score + 1
-END IF
+FOR each epoch
+    FOR each training example
 
-IF Marks >= 40 THEN
-    Score = Score + 1
-END IF
+        Calculate weighted sum
+        Output = Activation(weighted sum)
 
-IF Score = 2 THEN
-    PRINT "Pass"
-ELSE
-    PRINT "Fail"
-END IF
+        Error = Target - Output
+
+        Update weights
+        Update bias
+
+    END FOR
+END FOR
+
+Input test data
+
+Calculate weighted sum
+Output = Activation(weighted sum)
+
+Display Output
 
 END
