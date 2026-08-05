@@ -1,25 +1,20 @@
-def artificial_neural_network(attendance, marks):
+# Simple Artificial Neural Network
 
-    score = 0
+inputs = [1, 0]
+weights = [0.6, 0.4]
+bias = -0.5
 
-    # Neuron 1
-    if attendance >= 75:
-        score = score + 1
+# Calculate weighted sum
+s = 0
+for i in range(len(inputs)):
+    s += inputs[i] * weights[i]
 
-    # Neuron 2
-    if marks >= 40:
-        score = score + 1
+s += bias
 
-    # Output Neuron
-    if score == 2:
-        return "Pass"
-    else:
-        return "Fail"
+# Step activation function
+if s >= 0:
+    output = 1
+else:
+    output = 0
 
-
-attendance = int(input("Enter Attendance Percentage: "))
-marks = int(input("Enter Marks: "))
-
-result = artificial_neural_network(attendance, marks)
-
-print(result)
+print("Output:", output)
